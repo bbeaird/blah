@@ -69,6 +69,7 @@ class TodosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params[:todo]
+      params[:todo].permit(:name)
+      # params.permit(:name)
     end
 end
