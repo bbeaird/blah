@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Dinner Cookers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dinner_cookers.each do |dinner_cooker| %>
+      <tr>
+        <td><%= dinner_cooker.name %></td>
+        <td><%= link_to 'Show', dinner_cooker %></td>
+        <td><%= link_to 'Edit', edit_dinner_cooker_path(dinner_cooker) %></td>
+        <td><%= link_to 'Destroy', dinner_cooker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dinner cooker', new_dinner_cooker_path %>
