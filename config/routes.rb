@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :dinners
+
   resources :dinner_cookers
   resources :todos
 
