@@ -12,8 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :dinner_cooker %><br>
+    <%= f.collection_select(:dinner_cooker, DinnerCooker.all, :id, :name) %><br>
+    
     <%= f.label :date_cooked %><br>
-    <%= f.datetime_select :date_cooked %>
+    <%= f.date_select :date_cooked %>
   </div>
   <div class="actions">
     <%= f.submit %>

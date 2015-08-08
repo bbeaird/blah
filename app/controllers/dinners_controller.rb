@@ -25,9 +25,11 @@ class DinnersController < ApplicationController
   # POST /dinners.json
   def create
     @dinner = Dinner.new(dinner_params)
+    @dinner_cooker = DinnerCooker.find(1)
+    p @dinner_cooker
 
     respond_to do |format|
-      if @dinner.save
+      if @dinner_cooker.dinners.build(dinner_params)
         format.html { redirect_to @dinner, notice: 'Dinner was successfully created.' }
         format.json { render :show, status: :created, location: @dinner }
       else

@@ -18,15 +18,15 @@ ActiveRecord::Schema.define(version: 20150808062533) do
 
   create_table "dinner_cookers", force: true do |t|
     t.string   "name"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.datetime "dinner_cooked_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "dinners", force: true do |t|
-    t.datetime "date_cooked"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "dinner_cooker_id"
+    t.date     "date_cooked"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "todos", force: true do |t|
