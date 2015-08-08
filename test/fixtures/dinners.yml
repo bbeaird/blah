@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_cooked: 2015-08-07 23:25:33
+
+two:
+  date_cooked: 2015-08-07 23:25:33
