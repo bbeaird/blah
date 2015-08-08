@@ -25,22 +25,9 @@ class DinnersController < ApplicationController
   # POST /dinners.json
   def create
     date = Date.civil(*params[:dinner].sort.map(&:last).map(&:to_i))
-    @dinner = Dinner.new({ date_cooked: date })
-    p 'x'*50
-    p @dinner
-    p 'x'*50
-    p dinner_params
-    p 'x'*50
-    p dinner_params[:dinner]
-    p 'x'*50
-    # p dinner_params[:dinner][:dinner_cooker]
-    @dinner_cooker = DinnerCooker.new(dinner_params[:dinner])
-    p @dinner_cooker
-    p 'x'*50
-
+    @dinner = Dinner.new({ date_cooked: date, dinner_cooker_id: dinner_params[:dinner_cooker] })
     respond_to do |format|
-      if @dinner_cooker.dinners.build(dinner_params)
-      # if @dinner.save
+      if @dinner.save
         format.html { redirect_to @dinner, notice: 'Dinner was successfully created.' }
         format.json { render :show, status: :created, location: @dinner }
       else
