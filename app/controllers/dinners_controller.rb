@@ -24,12 +24,23 @@ class DinnersController < ApplicationController
   # POST /dinners
   # POST /dinners.json
   def create
-    @dinner = Dinner.new(dinner_params)
-    @dinner_cooker = DinnerCooker.find(1)
+    date = Date.civil(*params[:dinner].sort.map(&:last).map(&:to_i))
+    @dinner = Dinner.new({ date_cooked: date })
+    p 'x'*50
+    p @dinner
+    p 'x'*50
+    p dinner_params
+    p 'x'*50
+    p dinner_params[:dinner]
+    p 'x'*50
+    # p dinner_params[:dinner][:dinner_cooker]
+    @dinner_cooker = DinnerCooker.new(dinner_params[:dinner])
     p @dinner_cooker
+    p 'x'*50
 
     respond_to do |format|
       if @dinner_cooker.dinners.build(dinner_params)
+      # if @dinner.save
         format.html { redirect_to @dinner, notice: 'Dinner was successfully created.' }
         format.json { render :show, status: :created, location: @dinner }
       else
@@ -71,6 +82,6 @@ class DinnersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dinner_params
-      params.require(:dinner).permit(:date_cooked)
+      params.require(:dinner).permit(:date_cooked, :dinner_cooker)
     end
 end
