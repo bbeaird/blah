@@ -18,6 +18,11 @@
         <td><%= link_to 'Edit', edit_dinner_cooker_path(dinner_cooker) %></td>
         <td><%= link_to 'Destroy', dinner_cooker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% dinner_cooker.dinners.each do |dinner| %>
+      <tr>
+        <td style="padding-left: 30px;"><%= dinner.date_cooked %></td>
+      </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
