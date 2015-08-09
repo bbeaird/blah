@@ -4,7 +4,8 @@ class DinnerCookersController < ApplicationController
   # GET /dinner_cookers
   # GET /dinner_cookers.json
   def index
-    @dinner_cookers = DinnerCooker.all
+    # @dinner_cookers = DinnerCooker.all
+    @dinner_cookers = DinnerCooker.all.joins(:dinners).order('dinners.date_cooked asc')
   end
 
   # GET /dinner_cookers/1

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Dinner Cookers</h1>
+<h1>Dinner Cookers</h1>
 
 <table>
   <thead>
@@ -18,10 +18,16 @@
         <td><%= link_to 'Edit', edit_dinner_cooker_path(dinner_cooker) %></td>
         <td><%= link_to 'Destroy', dinner_cooker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <% dinner_cooker.dinners.each do |dinner| %>
-      <tr>
-        <td style="padding-left: 30px;"><%= dinner.date_cooked %></td>
-      </tr>
+      <% if dinner_cooker.dinners.length == 0 %>
+        <tr>
+          <td style="padding-left: 30px;">This bitch hasn't cooked yet!</td>
+        </tr>
+      <% else %>
+        <% dinner_cooker.dinners.each do |dinner| %>
+        <tr>
+          <td style="padding-left: 30px;"><%= dinner.date_cooked %></td>
+        </tr>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>
